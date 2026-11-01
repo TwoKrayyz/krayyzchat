@@ -12,6 +12,7 @@ func main() {
 
 	router.SetTrustedProxies([]string{"127.0.0.1"})
 
+	router.Static("/public", "../frontend/public")
 	router.GET("/", routes.Index)
 
 	router.Run(":3000")
