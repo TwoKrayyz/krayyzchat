@@ -14,6 +14,7 @@ func main() {
 
 	router.Static("/public", "../frontend/public")
 	router.GET("/", routes.Index)
+	router.GET("/signup", routes.SignUp)
 
 	router.Run(":3000")
 }
