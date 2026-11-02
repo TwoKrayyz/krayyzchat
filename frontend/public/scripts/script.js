@@ -49,4 +49,5 @@ async function signInFormHandler(event) {
         .catch(error => console.error(error));
 }
 
+if (signInForm) signInForm.addEventListener("submit", signInFormHandler);
 if (signUpForm) signUpForm.addEventListener("submit", signUpFormHandler);

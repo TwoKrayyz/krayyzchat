@@ -29,6 +29,7 @@ func main() {
 
 	v1Group := router.Group("/api/v1")
 	{
+		v1Group.POST("/signin", v1.SignIn)
 		v1Group.POST("/signup", v1.SignUp)
 	}
 
