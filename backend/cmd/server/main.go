@@ -24,6 +24,7 @@ func main() {
 
 	router.Static("/public", "../frontend/public")
 	router.GET("/", routes.Index)
+	router.GET("/signin", routes.SignIn)
 	router.GET("/signup", routes.SignUp)
 
 	v1Group := router.Group("/api/v1")
