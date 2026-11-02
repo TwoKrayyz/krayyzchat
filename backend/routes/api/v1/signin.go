@@ -1,8 +1,10 @@
 package v1
 
 import (
+	"errors"
 	"net/http"
 	"database/sql"
+	"github.com/golang-jwt/jwt"
 	"github.com/gin-gonic/gin"
 	"golang.org/x/crypto/bcrypt"
 	"github.com/TwoKrayyz/krayyzchat/database"
@@ -30,7 +32,7 @@ func SignIn(c *gin.Context) {
 
 	err := db.QueryRow("SELECT username, password FROM users WHERE username = $1", username).Scan(&dbUsername, &dbHashedPassword)
 
-	if dbUsername == sql.ErrNoRows.Error() {
+	if errors.Is(err, sql.ErrNoRows) {
 		c.JSON(http.StatusNotFound, gin.H{"data": "User does not exist"})
 	} else if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"err": err})
